@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.commands.TeleopArm;
+import frc.robot.subsystems.ArmSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -17,14 +19,15 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   
-  /* H! SUBSYSTEMS ----------------------------------------------------------------- */
-
-  /* H! COMMANDS   ----------------------------------------------------------------- */
-
-
   // H! Create the controller objects and store them
   private final XboxController primaryController = new XboxController(Constants.Joysticks.primaryControllerPort);
   private final XboxController secondaryController = new XboxController(Constants.Joysticks.secondaryControllerPort);
+
+  /* H! SUBSYSTEMS ----------------------------------------------------------------- */
+  ArmSubsystem armSubsystem = new ArmSubsystem();
+  /* H! COMMANDS   ----------------------------------------------------------------- */
+  TeleopArm teleopArmCommand = new TeleopArm(armSubsystem, secondaryController);
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {

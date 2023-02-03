@@ -31,6 +31,9 @@ public final class Constants {
       public static final int pivot = 1001; // H! TODO Insert the real motor IDs
       public static final int extension = 1002;
     }
+
+    public static final double xMoveSpeed = 0.1;
+    public static final double yMoveSpeed = 0.1;
   }
 
 
