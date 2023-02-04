@@ -12,29 +12,21 @@ package frc.robot;
  * <p>It is advised to statically import this class (or one of its inner classes) wherever the
  * constants are needed, to reduce verbosity.
  */
+
 public final class Constants {
-  public static final class Joysticks {
-    public static final int primaryControllerPort = 0;
-    public static final int secondaryControllerPort = 1;
-  }
 
+  //&& These are the Drivetrain motors.
 
-  public static final class Drivetrain {
+  public static final int driveTrainIDFrontLeft = 0;
+  public static final int driveTrainIDFrontRight = 0;
+  public static final int driveTrainIDBackLeft = 0;
+  public static final int driveTrainIDBackRight = 0;
 
-  }
+  //&& This is the Drive speed multiplier
 
-
-  public static final class Arm {
-
-  }
-
-
-  public static final class Grabber {
-
-  }
-
-
-  public static final class PhotonVision {
-    
-  }
+  public static final double driveSpeedMultiplier = 0;
+  
 }
+
+
+
