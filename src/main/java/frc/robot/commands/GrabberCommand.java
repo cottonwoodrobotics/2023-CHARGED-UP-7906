@@ -4,21 +4,24 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.GrabberSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.XboxController;
 
 /** An example command that uses an example subsystem. */
-public class ExampleCommand extends CommandBase {
+public class GrabberCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final ExampleSubsystem m_subsystem;
+  private final GrabberSubsystem m_subsystem;
+  private final XboxController m_controller;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ExampleCommand(ExampleSubsystem subsystem) {
+  public GrabberCommand(GrabberSubsystem subsystem, XboxController controller) {
     m_subsystem = subsystem;
+    m_controller = controller;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
   }
@@ -29,7 +32,14 @@ public class ExampleCommand extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    if (m_controller.getAButton()) {
+      m_subsystem.closeGrabber();
+    }
+    if (m_controller.getBButton()) {
+      m_subsystem.openGrabber();
+    }
+  }
 
   // Called once the command ends or is interrupted.
   @Override

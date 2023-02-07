@@ -4,10 +4,17 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+
+import edu.wpi.first.wpilibj.XboxController;
+
+import frc.robot.subsystems.GrabberSubsystem;
+import frc.robot.commands.GrabberCommand;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -16,15 +23,16 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
-  
-  /* H! SUBSYSTEMS ----------------------------------------------------------------- */
-
-  /* H! COMMANDS   ----------------------------------------------------------------- */
-
 
   // H! Create the controller objects and store them
   private final XboxController primaryController = new XboxController(Constants.Joysticks.primaryControllerPort);
   private final XboxController secondaryController = new XboxController(Constants.Joysticks.secondaryControllerPort);
+  
+  /* H! SUBSYSTEMS ----------------------------------------------------------------- */
+  private final GrabberSubsystem m_grabberSubsystem = new GrabberSubsystem();
+  /* H! COMMANDS   ----------------------------------------------------------------- */
+  private final GrabberCommand m_grabberCommand = new GrabberCommand(m_grabberSubsystem, secondaryController);
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -42,7 +50,7 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    
+
   }
 
   /**

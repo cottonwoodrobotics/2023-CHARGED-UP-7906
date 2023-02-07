@@ -30,7 +30,12 @@ public final class Constants {
 
 
   public static final class Grabber {
-
+    // ss TODO - insert correct values
+    public static final int grabberMotorID = 9999;
+    public static final double grabberCloseSpeed = 0.5;
+    public static final double grabberOpenSpeed = 0.5;
+    public static final double kPositiveEncoderRotationLimit = 0.5;
+    public static final double kNegativeEncoderRotationLimit = 0.5;
   }
 
 
