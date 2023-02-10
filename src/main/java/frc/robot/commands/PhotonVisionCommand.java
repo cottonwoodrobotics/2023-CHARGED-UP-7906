@@ -1,6 +1,6 @@
 package frc.robot.commands;
 
-import frc.robot.subsystems.PhotonVision;
+import frc.robot.subsystems.PhotonVisionSubsystem;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 /** An example command that uses an example subsystem. */
 public class PhotonVisionCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final PhotonVision m_subsystem;
+  private final PhotonVisionSubsystem m_subsystem;
 
   double targX;
   double targY;
@@ -28,7 +28,7 @@ public class PhotonVisionCommand extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public PhotonVisionCommand(PhotonVision subsystem) {
+  public PhotonVisionCommand(PhotonVisionSubsystem subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
@@ -45,7 +45,6 @@ public void execute() {
     if (m_subsystem.returnBestTarget() != null){
       botPose = m_subsystem.checkRobotPosition();
       System.out.print(botPose);
-      SmartDashboard.putNumber("BotPosePVCX", botPose.getX());
       targX = m_subsystem.returnBestTarget().getBestCameraToTarget().getX();
       targY = m_subsystem.returnBestTarget().getBestCameraToTarget().getY();
       targZ = m_subsystem.returnBestTarget().getBestCameraToTarget().getZ();
@@ -64,9 +63,6 @@ public void execute() {
       SmartDashboard.putNumber("target dist", Math.sqrt((targX*targX)+(targY*targY)+(targZ*targZ)));
       SmartDashboard.putNumber("target ID", id);
     }
-    SmartDashboard.putNumber("Robot Pose X", botPose.getX());
-    SmartDashboard.putNumber("Robot Pose Y", botPose.getY());
-    SmartDashboard.putNumber("Robot Pose Z", botPose.getZ());
   }
 
   // Called once the command ends or is interrupted.
