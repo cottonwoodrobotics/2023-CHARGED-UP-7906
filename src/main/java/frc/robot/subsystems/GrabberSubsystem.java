@@ -5,10 +5,8 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.SparkMaxAbsoluteEncoder;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.revrobotics.SparkMaxAbsoluteEncoder.Type;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -19,7 +17,7 @@ public class GrabberSubsystem extends SubsystemBase {
   private CANSparkMax motor = new CANSparkMax(Constants.Grabber.grabberMotorID, MotorType.kBrushless);
 
   // H! Gets the encoder that is plugged into the motor controller so we can tell where the grabber is positioned
-  private SparkMaxAbsoluteEncoder encoder = motor.getAbsoluteEncoder(Type.kDutyCycle);
+  private RelativeEncoder encoder = motor.getEncoder();
 
   /** Creates a new ExampleSubsystem. */
   public GrabberSubsystem() {}
