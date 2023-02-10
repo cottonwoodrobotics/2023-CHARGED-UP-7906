@@ -18,9 +18,9 @@ import edu.wpi.first.math.kinematics.MecanumDriveOdometry;
 import edu.wpi.first.math.kinematics.MecanumDriveWheelPositions;
 import edu.wpi.first.math.kinematics.MecanumDriveKinematics;
 
-public class DriveTrain extends SubsystemBase {
+public class DriveTrainSubsystem extends SubsystemBase {
     //&& Creates DriveTrainSubsystem
-    public DriveTrain() {
+    public DriveTrainSubsystem() {
         resetOdometry(new Pose2d());
     }
 
