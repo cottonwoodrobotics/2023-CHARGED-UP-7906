@@ -4,30 +4,66 @@
 
 package frc.robot;
 
-import frc.robot.commands.DriveCommand;
-import frc.robot.subsystems.DriveTrain;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
+import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.subsystems.GrabberSubsystem;
+import frc.robot.commands.GrabberCommand;
+import frc.robot.commands.TeleopArm;
+import frc.robot.subsystems.ArmSubsystem;
 
-
+/**
+ * This class is where the bulk of the robot should be declared. Since Command-based is a
+ * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
+ * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
+ * subsystems, commands, and trigger mappings) should be declared here.
+ */
 public class RobotContainer {
 
-    //&& Define subsystems and commands here
-    private final DriveTrain m_driveTrainSubsystem = new DriveTrain();
+  // H! Create the controller objects and store them
+  private final XboxController primaryController = new XboxController(Constants.Joysticks.primaryControllerPort);
+  private final XboxController secondaryController = new XboxController(Constants.Joysticks.secondaryControllerPort);
 
+  /* H! SUBSYSTEMS ----------------------------------------------------------------- */
+  private final ArmSubsystem m_armSubsystem = new ArmSubsystem();
+  private final GrabberSubsystem m_grabberSubsystem = new GrabberSubsystem();
+  /* H! COMMANDS   ----------------------------------------------------------------- */
+  private final TeleopArm m_teleopArmCommand = new TeleopArm(m_armSubsystem, secondaryController);
+  private final GrabberCommand m_grabberCommand = new GrabberCommand(m_grabberSubsystem, secondaryController);
 
-    XboxController primaryController = new XboxController(0);
+  /** The container for the robot. Contains subsystems, OI devices, and commands. */
+  public RobotContainer() {
+    // Configure the trigger bindings
+    configureBindings();
 
-    private final DriveCommand m_driveCommand = new DriveCommand(m_driveTrainSubsystem, primaryController);
+    // ss set GrabberCommand as the default command for GrabberSubsystem - makes GrabberCommand actually run
+    m_grabberSubsystem.setDefaultCommand(m_grabberCommand);
+  }
 
-    //&& Actual container for the robot. Contains subsystems, commands, etc.
-    public RobotContainer() {
-        //&& Configuers the button bindings. Obviously.
-        configureButtonBindings();
+  /**
+   * Use this method to define your trigger->command mappings. Triggers can be created via the
+   * {@link Trigger#Trigger(java.util.function.BooleanSupplier)} constructor with an arbitrary
+   * predicate, or via the named factories in {@link
+   * edu.wpi.first.wpilibj2.command.button.CommandGenericHID}'s subclasses for {@link
+   * CommandXboxController Xbox}/{@link edu.wpi.first.wpilibj2.command.button.CommandPS4Controller
+   * PS4} controllers or {@link edu.wpi.first.wpilibj2.command.button.CommandJoystick Flight
+   * joysticks}.
+   */
+  private void configureBindings() {
 
-        m_driveTrainSubsystem.setDefaultCommand(m_driveCommand);
-    }
+  }
 
-    //&& This method defines the button-to-command mappings.
-    private void configureButtonBindings() {}
-    
+  /**
+   * Use this to pass the autonomous command to the main {@link Robot} class.
+   *
+   * @return the command to run in autonomous
+   */
+  public Command getAutonomousCommand() {
+    // An example command will be run in autonomous
+    return null;
+  }
 }
