@@ -38,6 +38,9 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
+
+    // ss set GrabberCommand as the default command for GrabberSubsystem - makes GrabberCommand actually run
+    m_grabberSubsystem.setDefaultCommand(m_grabberCommand);
   }
 
   /**
