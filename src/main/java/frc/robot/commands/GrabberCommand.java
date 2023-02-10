@@ -11,13 +11,17 @@ import edu.wpi.first.wpilibj.XboxController;
 /** An example command that uses an example subsystem. */
 public class GrabberCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+
+  // H! Define property for the susystem this uses 
   private final GrabberSubsystem m_subsystem;
+  // H! Define property for the controller this uses
   private final XboxController m_controller;
 
-  /**
-   * Creates a new ExampleCommand.
+  /** H!
+   * Creates a new GrabberCommand.
    *
    * @param subsystem The subsystem used by this command.
+   * @param controller The controller that should control this command.
    */
   public GrabberCommand(GrabberSubsystem subsystem, XboxController controller) {
     m_subsystem = subsystem;
@@ -33,9 +37,11 @@ public class GrabberCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // H! If the A button is pressed, tell the grabber to close
     if (m_controller.getAButton()) {
       m_subsystem.closeGrabber();
     }
+    // H! If the B button is pressed, tell the grabber to open
     if (m_controller.getBButton()) {
       m_subsystem.openGrabber();
     }
