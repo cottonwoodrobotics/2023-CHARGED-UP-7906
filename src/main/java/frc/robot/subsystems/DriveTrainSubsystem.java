@@ -39,7 +39,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
     //&& Creates the gyro object
     private AHRS m_gyro = new AHRS();
 
-    private MecanumDriveOdometry m_Odometry = new MecanumDriveOdometry(Constants.driveKinematics, m_gyro.getRotation2d(), gWheelPositions());
+    private MecanumDriveOdometry m_Odometry = new MecanumDriveOdometry(Constants.Drivetrain.driveKinematics, m_gyro.getRotation2d(), gWheelPositions());
 
     public MecanumDriveWheelPositions gWheelPositions() {
         return new MecanumDriveWheelPositions(frontLeftEncoder.getPosition(), frontRightEncoder.getPosition(), backLeftEncoder.getPosition(), backRightEncoder.getPosition());
