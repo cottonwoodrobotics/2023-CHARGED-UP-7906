@@ -6,6 +6,9 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
+import com.revrobotics.SparkMaxAbsoluteEncoder;
+import com.revrobotics.SparkMaxPIDController;
+import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.math.controller.PIDController;
@@ -24,12 +27,16 @@ public class ArmSubsystem extends SubsystemBase {
   private double targetY = 0;
 
   // H! These are the PID controllers to move to a given point
-  private PIDController pivotPID = new PIDController(0.1, 0, 0);
-  private PIDController extensionPID = new PIDController(0.1, 0, 0);
+  private SparkMaxPIDController pivotPID;
+  private SparkMaxPIDController extensionPID;
 
   /** Creates a new ArmSubsystem. */
   public ArmSubsystem() {
+    pivotPID = pivotMotor.getPIDController();
+    extensionPID = extensionMotor.getPIDController();
 
+    setPIDFValues(pivotPID, 0.1, 0, 0, 0);
+    setPIDFValues(extensionPID, 0.1, 0, 0, 0);
   }
 
   /**H! Moves the arm to a given x and y position
@@ -62,7 +69,14 @@ public class ArmSubsystem extends SubsystemBase {
     double targetExtension = Math.sqrt(Math.pow(targetX, 2) + Math.pow(targetY, 2));
 
     // H! Set the motor speeds based on the PIDs
-    pivotMotor.set(pivotPID.calculate(pivotEncoder.getPosition(), targetPivot));
-    extensionMotor.set(extensionPID.calculate(extensionEncoder.getPosition(), targetExtension));
+    pivotPID.setReference(targetPivot, ControlType.kPosition);
+    extensionPID.setReference(targetExtension, ControlType.kPosition);
+  }
+
+  private static void setPIDFValues(SparkMaxPIDController pidController, double p, double i, double d, double f) {
+    pidController.setP(p);
+    pidController.setI(i);
+    pidController.setD(d);
+    pidController.setFF(f);
   }
 }
