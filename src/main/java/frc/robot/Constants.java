@@ -25,6 +25,17 @@ public final class Constants {
 
   public static final class Drivetrain {
 
+    //&& Lengths of the front/back and side(s) of the chassis
+    //&& TODO: Measure side lengths of chassis. Do this wheel-to-wheel
+    public static final double frontLength = 0;
+    public static final double sideLength = 0;
+
+    public static final MecanumDriveKinematics driveKinematics = new MecanumDriveKinematics(new Translation2d(frontLength / 2, sideLength / 2),
+    new Translation2d(frontLength / 2, -sideLength / 2), new Translation2d(-frontLength / 2, sideLength / 2),
+    new Translation2d(-frontLength / 2, -sideLength / 2));
+  
+
+
   }
 
   /** H! Holds the data relevant to the arm
@@ -50,16 +61,7 @@ public final class Constants {
   //&& This is the Drive speed multiplier
   public static final double driveSpeedMultiplier = 0;
 
-  //&& Lengths of the front/back and side(s) of the chassis
-  //&& TODO: Measure side lengths of chassis. Do this wheel-to-wheel
-  public static final double driveTrainFrontLength = 0;
-  public static final double driveTrainSideLength = 0;
-
-  public static final MecanumDriveKinematics driveKinematics = new MecanumDriveKinematics(new Translation2d(driveTrainFrontLength / 2, driveTrainSideLength / 2),
-    new Translation2d(driveTrainFrontLength / 2, -driveTrainSideLength / 2), new Translation2d(-driveTrainFrontLength / 2, driveTrainSideLength / 2),
-    new Translation2d(-driveTrainFrontLength / 2, -driveTrainSideLength / 2));
   
-
   public static final class Grabber {
     // ss TODO - insert correct values
     public static final int grabberMotorID = 9999;

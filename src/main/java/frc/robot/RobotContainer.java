@@ -16,6 +16,10 @@ import frc.robot.commands.GrabberCommand;
 import frc.robot.commands.TeleopArm;
 import frc.robot.subsystems.ArmSubsystem;
 
+import frc.robot.subsystems.DriveTrainSubsystem;
+import frc.robot.Constants.Drivetrain;
+import frc.robot.commands.DriveTrainCommand;
+
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -31,9 +35,11 @@ public class RobotContainer {
   /* H! SUBSYSTEMS ----------------------------------------------------------------- */
   private final ArmSubsystem m_armSubsystem = new ArmSubsystem();
   private final GrabberSubsystem m_grabberSubsystem = new GrabberSubsystem();
+  private final DriveTrainSubsystem m_drivetrainSubsystem = new DriveTrainSubsystem();
   /* H! COMMANDS   ----------------------------------------------------------------- */
   private final TeleopArm m_teleopArmCommand = new TeleopArm(m_armSubsystem, secondaryController);
   private final GrabberCommand m_grabberCommand = new GrabberCommand(m_grabberSubsystem, secondaryController);
+  private final DriveTrainCommand m_drivetrainCommand = new DriveTrainCommand(m_drivetrainSubsystem, primaryController);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -42,6 +48,9 @@ public class RobotContainer {
 
     // ss set GrabberCommand as the default command for GrabberSubsystem - makes GrabberCommand actually run
     m_grabberSubsystem.setDefaultCommand(m_grabberCommand);
+
+    //&& set DriveTrainCommand as default for DriveTrainSubsystem
+    m_drivetrainSubsystem.setDefaultCommand(m_drivetrainCommand);
   }
 
   /**
