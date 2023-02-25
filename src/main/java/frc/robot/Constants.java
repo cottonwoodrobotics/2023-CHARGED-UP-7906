@@ -33,6 +33,17 @@ public final class Constants {
     public static final MecanumDriveKinematics driveKinematics = new MecanumDriveKinematics(new Translation2d(frontLength / 2, sideLength / 2),
     new Translation2d(frontLength / 2, -sideLength / 2), new Translation2d(-frontLength / 2, sideLength / 2),
     new Translation2d(-frontLength / 2, -sideLength / 2));
+
+
+    //&& These are the Drivetrain motors.
+    //&& TODO: Add the motor IDs
+    public static final int IDFrontLeft = 0;
+    public static final int IDFrontRight = 0;
+    public static final int IDBackLeft = 0;
+    public static final int IDBackRight = 0;
+
+    //&& This is the Drive speed multiplier
+    public static final double driveSpeedMultiplier = 0;
   
 
 
@@ -51,15 +62,6 @@ public final class Constants {
     public static final double yMoveSpeed = 0.1;
   }
 
-  //&& These are the Drivetrain motors.
-  //&& TODO: Add the motor IDs
-  public static final int driveTrainIDFrontLeft = 0;
-  public static final int driveTrainIDFrontRight = 0;
-  public static final int driveTrainIDBackLeft = 0;
-  public static final int driveTrainIDBackRight = 0;
-
-  //&& This is the Drive speed multiplier
-  public static final double driveSpeedMultiplier = 0;
 
   
   public static final class Grabber {

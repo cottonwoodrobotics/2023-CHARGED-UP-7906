@@ -1,4 +1,5 @@
 package frc.robot.commands;
+import static frc.robot.Constants.Drivetrain.*;
 
 import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrainSubsystem;
@@ -26,17 +27,17 @@ public class DriveTrainCommand extends CommandBase {
     //&& Called every time the scheduler runs while the command is scheduled
     @Override
     public void execute() {
-        double ySpeed = m_controller.getLeftY() * Constants.driveSpeedMultiplier;
-        double xSpeed = m_controller.getLeftX() * Constants.driveSpeedMultiplier;
-        double zRotation = m_controller.getRightX() * Constants.driveSpeedMultiplier;
+        double ySpeed = m_controller.getLeftY() * driveSpeedMultiplier;
+        double xSpeed = m_controller.getLeftX() * driveSpeedMultiplier;
+        double zRotation = m_controller.getRightX() * driveSpeedMultiplier;
     //ET changes y or x speed based based on left or right analog inputs
         if (m_controller.getLeftTriggerAxis() > 0.2) {
-            xSpeed = (m_controller.getLeftTriggerAxis()*0.1/Constants.driveSpeedMultiplier);
-            ySpeed = (m_controller.getLeftTriggerAxis()*0.1/Constants.driveSpeedMultiplier);
+            xSpeed = (m_controller.getLeftTriggerAxis()*0.1/driveSpeedMultiplier);
+            ySpeed = (m_controller.getLeftTriggerAxis()*0.1/driveSpeedMultiplier);
         }
         if ((m_controller.getRightTriggerAxis() > 0.2)) {
-            xSpeed = (m_controller.getRightTriggerAxis()*1/Constants.driveSpeedMultiplier);
-            ySpeed = (m_controller.getRightTriggerAxis()*1/Constants.driveSpeedMultiplier);
+            xSpeed = (m_controller.getRightTriggerAxis()*1/driveSpeedMultiplier);
+            ySpeed = (m_controller.getRightTriggerAxis()*1/driveSpeedMultiplier);
         }
         
         m_driveTrainSubsystem.driveCartesian(ySpeed, xSpeed, zRotation);

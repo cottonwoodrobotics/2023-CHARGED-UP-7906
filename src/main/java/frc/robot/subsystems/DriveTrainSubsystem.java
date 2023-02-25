@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.drive.MecanumDrive.WheelSpeeds;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import static frc.robot.Constants.Drivetrain.*;
 
 //Odometry & kinematics imports
 import com.kauailabs.navx.frc.AHRS;
@@ -25,10 +26,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
     }
 
     //&& Motor objects
-    CANSparkMax frontLeftMotor = new CANSparkMax(Constants.driveTrainIDFrontLeft, MotorType.kBrushless);
-    CANSparkMax frontRightMotor = new CANSparkMax(Constants.driveTrainIDFrontRight, MotorType.kBrushless);
-    CANSparkMax backLeftMotor = new CANSparkMax(Constants.driveTrainIDBackLeft, MotorType.kBrushless);
-    CANSparkMax backRightMotor = new CANSparkMax(Constants.driveTrainIDBackRight, MotorType.kBrushless);
+    CANSparkMax frontLeftMotor = new CANSparkMax(IDFrontLeft, MotorType.kBrushless);
+    CANSparkMax frontRightMotor = new CANSparkMax(IDFrontRight, MotorType.kBrushless);
+    CANSparkMax backLeftMotor = new CANSparkMax(IDBackLeft, MotorType.kBrushless);
+    CANSparkMax backRightMotor = new CANSparkMax(IDBackRight, MotorType.kBrushless);
 
     //&& Motor encoder objects
     RelativeEncoder frontLeftEncoder = frontLeftMotor.getEncoder();
