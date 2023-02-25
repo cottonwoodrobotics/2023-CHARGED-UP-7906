@@ -60,6 +60,7 @@ public final class Constants {
 
   //&& This is the Drive speed multiplier
   public static final double driveSpeedMultiplier = 0;
+public static final MecanumDriveKinematics driveKinematics = null;
 
   
   public static final class Grabber {
