@@ -29,6 +29,15 @@ public class DriveTrainCommand extends CommandBase {
         double ySpeed = m_controller.getLeftY() * Constants.driveSpeedMultiplier;
         double xSpeed = m_controller.getLeftX() * Constants.driveSpeedMultiplier;
         double zRotation = m_controller.getRightX() * Constants.driveSpeedMultiplier;
+        if (m_controller.getLeftTriggerAxis() > 0.2) {
+            xSpeed = (m_controller.getLeftTriggerAxis()*0.1/Constants.driveSpeedMultiplier);
+            ySpeed = (m_controller.getLeftTriggerAxis()*0.1/Constants.driveSpeedMultiplier);
+        }
+        if ((m_controller.getRightTriggerAxis() > 0.2)) {
+            xSpeed = (m_controller.getRightTriggerAxis()*1/Constants.driveSpeedMultiplier);
+            ySpeed = (m_controller.getRightTriggerAxis()*1/Constants.driveSpeedMultiplier);
+        }
+        
         m_driveTrainSubsystem.driveCartesian(ySpeed, xSpeed, zRotation);
     }
 
