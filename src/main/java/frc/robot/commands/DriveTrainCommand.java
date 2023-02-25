@@ -29,6 +29,7 @@ public class DriveTrainCommand extends CommandBase {
         double ySpeed = m_controller.getLeftY() * Constants.driveSpeedMultiplier;
         double xSpeed = m_controller.getLeftX() * Constants.driveSpeedMultiplier;
         double zRotation = m_controller.getRightX() * Constants.driveSpeedMultiplier;
+    //ET changes y or x speed based based on left or right analog inputs
         if (m_controller.getLeftTriggerAxis() > 0.2) {
             xSpeed = (m_controller.getLeftTriggerAxis()*0.1/Constants.driveSpeedMultiplier);
             ySpeed = (m_controller.getLeftTriggerAxis()*0.1/Constants.driveSpeedMultiplier);
