@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.MecanumDriveKinematics;
+import edu.wpi.first.math.util.Units;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -26,13 +27,23 @@ public final class Constants {
   public static final class Drivetrain {
 
     //&& Lengths of the front/back and side(s) of the chassis
-    //&& TODO: Measure side lengths of chassis. Do this wheel-to-wheel
-    public static final double frontLength = 0;
-    public static final double sideLength = 0;
-
+    public static final double frontLength = Units.inchesToMeters(21);
+    public static final double sideLength =  Units.inchesToMeters(23);
+    
     public static final MecanumDriveKinematics driveKinematics = new MecanumDriveKinematics(new Translation2d(frontLength / 2, sideLength / 2),
     new Translation2d(frontLength / 2, -sideLength / 2), new Translation2d(-frontLength / 2, sideLength / 2),
     new Translation2d(-frontLength / 2, -sideLength / 2));
+
+
+    //&& These are the Drivetrain motors.
+    //&& TODO: Add the motor IDs
+    public static final int IDFrontLeft = 0;
+    public static final int IDFrontRight = 0;
+    public static final int IDBackLeft = 0;
+    public static final int IDBackRight = 0;
+
+    //&& This is the Drive speed multiplier
+    public static final double driveSpeedMultiplier = 0;
   
 
 
