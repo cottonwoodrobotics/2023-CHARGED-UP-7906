@@ -12,13 +12,14 @@ import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class ArmSubsystem extends SubsystemBase {
 
   private CANSparkMax pivotMotor = new CANSparkMax(Constants.Arm.MotorIDs.pivot, MotorType.kBrushless);
-  private CANSparkMax extensionMotor = new CANSparkMax(Constants.Arm.MotorIDs.extension, MotorType.kBrushless);
+  private CANSparkMax extensionMotor = new CANSparkMax(Constants.Arm.MotorIDs.extension, MotorType.kBrushed);
 
   private RelativeEncoder pivotEncoder = pivotMotor.getEncoder();
   private RelativeEncoder extensionEncoder = extensionMotor.getEncoder();
