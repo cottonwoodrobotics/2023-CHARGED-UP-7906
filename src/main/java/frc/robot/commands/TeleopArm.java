@@ -33,7 +33,7 @@ public class TeleopArm extends CommandBase {
   public void execute() {
     //armSubsystem.moveByXY(controller.getRightY() * Constants.Arm.yMoveSpeed, controller.getLeftY() * Constants.Arm.xMoveSpeed);
     
-    // :D Yeah this looks terrible, but I'm just intending to set up quick manual controls so the underdogs can test
+    // :D Yeah this looks terrible, but I'm just intending to set up quick manual controls so The Underdogs can test
     if(Math.abs(controller.getRightY())>0.1){
       armSubsystem.manualExtend(controller.getRightY()/-30);
     }

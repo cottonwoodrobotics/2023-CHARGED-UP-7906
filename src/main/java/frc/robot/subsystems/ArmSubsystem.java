@@ -38,8 +38,9 @@ public class ArmSubsystem extends SubsystemBase {
   public ArmSubsystem() {
     pivotPID = pivotMotor.getPIDController();
     //extensionPID = extensionMotor.getPIDController();
+    pivotPID.setOutputRange(-0.3,0.3);
 
-    setPIDFValues(pivotPID, 0.3, 0, 0, 0);
+    setPIDFValues(pivotPID, 0.1, 0, 0, 0);
     //setPIDFValues(extensionPID, 0.1, 0, 0, 0);
 
     extensionEncoder.reset();
@@ -87,10 +88,17 @@ public class ArmSubsystem extends SubsystemBase {
     // H! Set the motor speeds based on the PIDs
     //pivotPID.setReference(targetPivot, ControlType.kPosition);
     //extensionPID.setReference(targetExtension, ControlType.kPosition);
+    if(testPivot<0){
+      testPivot = 0;
+    }
+    if(testExtension<0){
+      testExtension = 0;
+    }
     pivotPID.setReference(testPivot, ControlType.kPosition);
     extensionMotor.set(extensionPID.calculate(extensionEncoder.getDistance()/2048.0, testExtension));
 
-    System.out.println(extensionEncoder.getDistance()/2048.0);
+    System.out.println(extensionEncoder.getDistance());
+
   }
 
   private static void setPIDFValues(SparkMaxPIDController pidController, double p, double i, double d, double f) {

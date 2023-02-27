@@ -31,14 +31,17 @@ public class DriveTrainCommand extends CommandBase {
         double xSpeed = m_controller.getLeftX() * driveSpeedMultiplier;
         double zRotation = m_controller.getRightX() * driveSpeedMultiplier;
     //ET changes y or x speed based based on left or right analog inputs
-        if (m_controller.getLeftTriggerAxis() > 0.2) {
-            xSpeed = (m_controller.getLeftTriggerAxis()*0.1/driveSpeedMultiplier);
-            ySpeed = (m_controller.getLeftTriggerAxis()*0.1/driveSpeedMultiplier);
-        }
-        if ((m_controller.getRightTriggerAxis() > 0.2)) {
-            xSpeed = (m_controller.getRightTriggerAxis()*1/driveSpeedMultiplier);
-            ySpeed = (m_controller.getRightTriggerAxis()*1/driveSpeedMultiplier);
-        }
+
+    // :D this appears to be broken, so I'm commenting this out for now while I test other things.    
+
+        // if (m_controller.getLeftTriggerAxis() > 0.2) {
+        //     xSpeed = (m_controller.getLeftTriggerAxis()*0.1/driveSpeedMultiplier);
+        //     ySpeed = (m_controller.getLeftTriggerAxis()*0.1/driveSpeedMultiplier);
+        // }
+        // if ((m_controller.getRightTriggerAxis() > 0.2)) {
+        //     xSpeed = (m_controller.getRightTriggerAxis()*1/driveSpeedMultiplier);
+        //     ySpeed = (m_controller.getRightTriggerAxis()*1/driveSpeedMultiplier);
+        // }
         
         m_driveTrainSubsystem.driveCartesian(ySpeed, xSpeed, zRotation);
     }

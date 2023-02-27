@@ -22,11 +22,15 @@ public class GrabberSubsystem extends SubsystemBase {
   // H! Gets the encoder that is plugged into the motor controller so we can tell where the grabber is positioned
   private RelativeEncoder encoder = motor.getEncoder();
 
+
   /** Creates a new ExampleSubsystem. */
   public GrabberSubsystem() {
     grabPid = motor.getPIDController();
 
     setPIDFValues(grabPid, 0.1, 0, 0, 0);
+
+    grabPid.setOutputRange(-0.3, 0.3);
+    motor.setSmartCurrentLimit(5);
   }
 
 

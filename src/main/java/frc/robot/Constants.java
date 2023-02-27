@@ -70,7 +70,7 @@ public final class Constants {
   public static final int driveTrainIDBackRight = 4;
 
   //&& This is the Drive speed multiplier
-  public static final double driveSpeedMultiplier = 0;
+  public static final double driveSpeedMultiplier = 2;
 public static final MecanumDriveKinematics driveKinematics = null;
 
   
@@ -79,8 +79,8 @@ public static final MecanumDriveKinematics driveKinematics = null;
     public static final int grabberMotorID = 13;
     public static final double grabberCloseSpeed = 0.2;
     public static final double grabberOpenSpeed = 0.2;
-    public static final double kPositiveEncoderRotationLimit = 4;
-    public static final double kNegativeEncoderRotationLimit = -4;
+    public static final double kPositiveEncoderRotationLimit = 7;
+    public static final double kNegativeEncoderRotationLimit = -2;
   }
 }
 
