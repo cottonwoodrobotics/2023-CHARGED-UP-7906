@@ -24,6 +24,11 @@ public class DriveTrainSubsystem extends SubsystemBase {
     //&& Creates DriveTrainSubsystem
     public DriveTrainSubsystem() {
         resetOdometry(new Pose2d());
+        //ss reset Motors
+        frontLeftMotor.restoreFactoryDefaults();
+        frontRightMotor.restoreFactoryDefaults();
+        backLeftMotor.restoreFactoryDefaults();
+        backRightMotor.restoreFactoryDefaults();
     }
 
     //&& Motor objects

@@ -35,7 +35,7 @@ public class DriveTrainCommand extends CommandBase {
             xSpeed = (m_controller.getLeftTriggerAxis()*0.1/driveSpeedMultiplier);
             ySpeed = (m_controller.getLeftTriggerAxis()*0.1/driveSpeedMultiplier);
         }
-        if ((m_controller.getRightTriggerAxis() > 0.2)) {
+        if (m_controller.getRightTriggerAxis() > 0.2) {
             xSpeed = (m_controller.getRightTriggerAxis()*1/driveSpeedMultiplier);
             ySpeed = (m_controller.getRightTriggerAxis()*1/driveSpeedMultiplier);
         }
