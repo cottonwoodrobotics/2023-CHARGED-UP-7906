@@ -37,10 +37,10 @@ public final class Constants {
 
     //&& These are the Drivetrain motors.
     //&& TODO: Add the motor IDs
-    public static final int IDFrontLeft = 0;
-    public static final int IDFrontRight = 0;
-    public static final int IDBackLeft = 0;
-    public static final int IDBackRight = 0;
+    public static final int IDFrontLeft = 1;
+    public static final int IDFrontRight = 2;
+    public static final int IDBackLeft = 3;
+    public static final int IDBackRight = 4;
 
     //&& This is the Drive speed multiplier
     public static final double driveSpeedMultiplier = 0;
@@ -54,8 +54,8 @@ public final class Constants {
    */
   public static final class Arm {
     public static final class MotorIDs {
-      public static final int pivot = 1001; // H! TODO Insert the real motor IDs
-      public static final int extension = 1002;
+      public static final int pivot = 11; // H! TODO Insert the real motor IDs
+      public static final int extension = 12;
     }
 
     public static final double xMoveSpeed = 0.1;
@@ -64,10 +64,10 @@ public final class Constants {
 
   //&& These are the Drivetrain motors.
   //&& TODO: Add the motor IDs
-  public static final int driveTrainIDFrontLeft = 0;
-  public static final int driveTrainIDFrontRight = 0;
-  public static final int driveTrainIDBackLeft = 0;
-  public static final int driveTrainIDBackRight = 0;
+  public static final int driveTrainIDFrontLeft = 1;
+  public static final int driveTrainIDFrontRight = 2;
+  public static final int driveTrainIDBackLeft = 3;
+  public static final int driveTrainIDBackRight = 4;
 
   //&& This is the Drive speed multiplier
   public static final double driveSpeedMultiplier = 0;
@@ -76,11 +76,11 @@ public static final MecanumDriveKinematics driveKinematics = null;
   
   public static final class Grabber {
     // ss TODO - insert correct values
-    public static final int grabberMotorID = 9999;
-    public static final double grabberCloseSpeed = 0.5;
-    public static final double grabberOpenSpeed = 0.5;
-    public static final double kPositiveEncoderRotationLimit = 0.5;
-    public static final double kNegativeEncoderRotationLimit = 0.5;
+    public static final int grabberMotorID = 13;
+    public static final double grabberCloseSpeed = 0.2;
+    public static final double grabberOpenSpeed = 0.2;
+    public static final double kPositiveEncoderRotationLimit = 4;
+    public static final double kNegativeEncoderRotationLimit = -4;
   }
 }
 
