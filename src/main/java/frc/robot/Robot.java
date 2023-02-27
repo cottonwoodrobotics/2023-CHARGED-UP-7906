@@ -22,7 +22,7 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
 
     //&& Runs the Scheduler for polling buttons, adding and running commands, 
-    //&&and running subsystem methods. 
+    //&& and running subsystem methods. 
     //&& MUST BE CALLED FROM THE ROBOT'S PERIODIC BLOCK
     CommandScheduler.getInstance().run();
   }
