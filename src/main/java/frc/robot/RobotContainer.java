@@ -49,6 +49,8 @@ public class RobotContainer {
     // ss set GrabberCommand as the default command for GrabberSubsystem - makes GrabberCommand actually run
     m_grabberSubsystem.setDefaultCommand(m_grabberCommand);
 
+    m_armSubsystem.setDefaultCommand(m_teleopArmCommand);
+
     //&& set DriveTrainCommand as default for DriveTrainSubsystem
     m_drivetrainSubsystem.setDefaultCommand(m_drivetrainCommand);
   }

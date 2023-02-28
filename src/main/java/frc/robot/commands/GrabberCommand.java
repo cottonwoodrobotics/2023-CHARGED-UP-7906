@@ -39,11 +39,11 @@ public class GrabberCommand extends CommandBase {
   public void execute() {
     // H! If the A button is pressed, tell the grabber to close
     if (m_controller.getAButton()) {
-      m_subsystem.closeGrabber();
+      m_subsystem.closeGrabberPID();
     }
     // H! If the B button is pressed, tell the grabber to open
     if (m_controller.getBButton()) {
-      m_subsystem.openGrabber();
+      m_subsystem.openGrabberPID();
     }
   }
 

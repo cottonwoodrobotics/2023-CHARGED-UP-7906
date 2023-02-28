@@ -31,7 +31,15 @@ public class TeleopArm extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    armSubsystem.moveByXY(controller.getRightY() * Constants.Arm.yMoveSpeed, controller.getLeftY() * Constants.Arm.xMoveSpeed);
+    //armSubsystem.moveByXY(controller.getRightY() * Constants.Arm.yMoveSpeed, controller.getLeftY() * Constants.Arm.xMoveSpeed);
+    
+    // :D Yeah this looks terrible, but I'm just intending to set up quick manual controls so The Underdogs can test
+    if(Math.abs(controller.getRightY())>0.1){
+      armSubsystem.manualExtend(controller.getRightY()/-30);
+    }
+    if(Math.abs(controller.getLeftY())>0.1){
+      armSubsystem.manualPivot(controller.getLeftY());
+    }
   }
 
   // Called once the command ends or is interrupted.

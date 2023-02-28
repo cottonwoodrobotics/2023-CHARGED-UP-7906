@@ -13,6 +13,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -22,22 +23,28 @@ public class ArmSubsystem extends SubsystemBase {
   private CANSparkMax extensionMotor = new CANSparkMax(Constants.Arm.MotorIDs.extension, MotorType.kBrushed);
 
   private RelativeEncoder pivotEncoder = pivotMotor.getEncoder();
-  private RelativeEncoder extensionEncoder = extensionMotor.getEncoder();
+  private Encoder extensionEncoder = new Encoder(8,7,true);
+
+  private double testExtension = 0;
+  private double testPivot = 0;
 
   private double targetX = 0;
   private double targetY = 0;
 
   // H! These are the PID controllers to move to a given point
   private SparkMaxPIDController pivotPID;
-  private SparkMaxPIDController extensionPID;
+  private PIDController extensionPID = new PIDController(2.0, 0, 0);
 
   /** Creates a new ArmSubsystem. */
   public ArmSubsystem() {
     pivotPID = pivotMotor.getPIDController();
-    extensionPID = extensionMotor.getPIDController();
+    //extensionPID = extensionMotor.getPIDController();
+    pivotPID.setOutputRange(-0.3,0.3);
 
     setPIDFValues(pivotPID, 0.1, 0, 0, 0);
-    setPIDFValues(extensionPID, 0.1, 0, 0, 0);
+    //setPIDFValues(extensionPID, 0.1, 0, 0, 0);
+
+    extensionEncoder.reset();
   }
 
   /**H! Moves the arm to a given x and y position
@@ -62,6 +69,16 @@ public class ArmSubsystem extends SubsystemBase {
   }
 
 
+  public void manualExtend(double ponk){
+    testExtension += ponk;
+  }
+
+
+  public void manualPivot(double ponk){
+    testPivot += ponk;
+  }
+
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
@@ -70,8 +87,19 @@ public class ArmSubsystem extends SubsystemBase {
     double targetExtension = Math.sqrt(Math.pow(targetX, 2) + Math.pow(targetY, 2));
 
     // H! Set the motor speeds based on the PIDs
-    pivotPID.setReference(targetPivot, ControlType.kPosition);
-    extensionPID.setReference(targetExtension, ControlType.kPosition);
+    //pivotPID.setReference(targetPivot, ControlType.kPosition);
+    //extensionPID.setReference(targetExtension, ControlType.kPosition);
+    if(testPivot<0){
+      testPivot = 0;
+    }
+    if(testExtension<0){
+      testExtension = 0;
+    }
+    pivotPID.setReference(testPivot, ControlType.kPosition);
+    extensionMotor.set(extensionPID.calculate(extensionEncoder.getDistance()/2048.0, testExtension));
+
+    System.out.println(extensionEncoder.getDistance());
+
   }
 
   private static void setPIDFValues(SparkMaxPIDController pidController, double p, double i, double d, double f) {
