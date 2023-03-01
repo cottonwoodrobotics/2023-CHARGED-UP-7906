@@ -32,6 +32,15 @@ public class DriveTrainSubsystem extends SubsystemBase {
         //ss invert motors
         frontLeftMotor.setInverted(true);
         backLeftMotor.setInverted(true);
+        //ss current limits
+        frontLeftMotor.setSmartCurrentLimit(38);
+        frontRightMotor.setSmartCurrentLimit(38);
+        backLeftMotor.setSmartCurrentLimit(38);
+        backRightMotor.setSmartCurrentLimit(38);
+        frontLeftMotor.setSecondaryCurrentLimit(40);
+        frontRightMotor.setSecondaryCurrentLimit(40);
+        backLeftMotor.setSecondaryCurrentLimit(40);
+        backRightMotor.setSecondaryCurrentLimit(40);
     }
 
     //&& Motor objects
