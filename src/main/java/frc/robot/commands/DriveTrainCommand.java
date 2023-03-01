@@ -42,6 +42,18 @@ public class DriveTrainCommand extends CommandBase {
         //     xSpeed = (m_controller.getRightTriggerAxis()*1/driveSpeedMultiplier);
         //     ySpeed = (m_controller.getRightTriggerAxis()*1/driveSpeedMultiplier);
         // }
+
+        if (m_controller.getRawButton(7)) {
+            ySpeed *= (slowmodeSpeed / driveSpeedMultiplier);
+            xSpeed *= (slowmodeSpeed / driveSpeedMultiplier);
+            zRotation *= (slowmodeSpeed / driveSpeedMultiplier);
+        } else if (m_controller.getRawButton(8)) {
+            ySpeed *= (fastmodeSpeed / driveSpeedMultiplier);
+            xSpeed *= (fastmodeSpeed / driveSpeedMultiplier);
+            zRotation *= (fastmodeSpeed / driveSpeedMultiplier);
+        }
+        
+        
         
         m_driveTrainSubsystem.driveCartesian(ySpeed, xSpeed, zRotation);
     }

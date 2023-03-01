@@ -43,9 +43,9 @@ public final class Constants {
     public static final int IDBackRight = 4;
 
     //&& This is the Drive speed multiplier
-    public static final double driveSpeedMultiplier = 1;
-  
-
+    public static final double driveSpeedMultiplier = 0.5;
+    public static final double slowmodeSpeed = 0.05;
+    public static final double fastmodeSpeed = 1.0;
 
   }
 
