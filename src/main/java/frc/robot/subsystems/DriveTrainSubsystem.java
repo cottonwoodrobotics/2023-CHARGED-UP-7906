@@ -29,6 +29,9 @@ public class DriveTrainSubsystem extends SubsystemBase {
         frontRightMotor.restoreFactoryDefaults();
         backLeftMotor.restoreFactoryDefaults();
         backRightMotor.restoreFactoryDefaults();
+        //ss invert motors
+        frontLeftMotor.setInverted(true);
+        backLeftMotor.setInverted(true);
     }
 
     //&& Motor objects
